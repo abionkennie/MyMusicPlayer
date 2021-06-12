@@ -9,10 +9,10 @@ const title = document.querySelector('#title')
 const cover = document.querySelector('#cover')
 
 // Song Titles
-const songs = ['ukulele', 'summer', 'Therapy', 'Speak-To-Me']
+const songs = ['ukulele', 'summer', 'Therapy', 'Speak-To-Me', 'Obinasom']
 
 //Keep track of songs
-let songIndex = 3
+let songIndex = 4
 
 // Initially load song info DOM
 loadSong(songs[songIndex])
@@ -95,3 +95,16 @@ audio.addEventListener('timeupdate', updateProgress)
 progressContainer.addEventListener('click', setProgress)
 
 audio.addEventListener('ended', nextSong)
+
+//Save to Local Storage
+function saveLocalMusic(songs) {
+    console.log(mySongs);
+    let mySongs;
+    if (localStorage.getItem('songs') === null) {
+        songs = [];
+    } else {
+        songs = JSON.parse(localStorage.getItems('songs'));
+    }
+    mySongs.push(songs)
+    localStorage.setItem("mySongs", JSON.stringify(mySongs));
+}
